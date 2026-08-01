@@ -1,74 +1,39 @@
 package DAO;
 
+
 public class UserDAO {
-    //Connect to database
-    private final Connection connection;
 
-    public StudentRepo() {
-        =DBAccess.getInstance().getConnection();
+        private String username;
+        private String email;
+        private String password;
 
-    }
-
-    //If student exist by email
-    public boolean existByEmail(String Email){
-        String query ="SELECT id FROM users WHERE email = ?;";
-
-        try{
-            PreparedStatement ps = connection.prepareStatement(query);
-            ps.setString( 1,email);
-            ResultSet rs = ps.executeQuery();
-            return rs.next();
-
-        }catch (SQLException e){
-            e.printStackTrace();
+        public UserDAO(String username, String email, String password) {
+            this.username = username;
+            this.email = email;
+            this.password = password;
         }
-        return false;
-    }
 
-    //If student exist by phone
-    public boolean existByPhone(String phone){
-        String query ="SELECT id FROM users WHERE phone = ?;";
-
-        try{
-            PreparedStatement ps = connection.prepareStatement(query);
-            ps.setString( 1,phone);
-            ResultSet rs = ps.executeQuery();
-            return rs.next();
-
-        }catch (SQLException e){
-            e.printStackTrace();
+        public String getUsername() {
+            return username;
         }
-        return false;
-    }
 
-
-    // If student exist by index number
-    public boolean existByIndex(String Index){
-        String query ="SELECT id FROM users WHERE index = ?;";
-
-        try{
-            PreparedStatement ps = connection.prepareStatement(query);
-            ps.setString( 1,index);
-            ResultSet rs = ps.executeQuery();
-            return rs.next();
-
-        }catch (SQLException e){
-            e.printStackTrace();
+        public String getEmail() {
+            return email;
         }
-        return false;
+
+        public String getPassword() {
+            return password;
+        }
+
+        public void setUsername(String username) {
+            this.username = username;
+        }
+
+        public void setEmail(String email) {
+            this.email = email;
+        }
+
+        public void setPassword(String password) {
+            this.password = password;
+        }
     }
-
-
-    // insert or create new student
-
-    //get all student
-
-    //get one student by id
-
-    //delete student
-
-    //update student
-
-
-
-}
